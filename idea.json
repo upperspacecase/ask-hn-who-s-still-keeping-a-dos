@@ -1,0 +1,95 @@
+{
+  "status": "killed",
+  "killed_at_stage": 4,
+  "kill_reason": "The one thing that makes this problem hard is physical ISA-bus / parallel-port access, and no web or software product removes that constraint. The hardware answer already exists from 3+ established vendors (Advantech, IEI, Portwell industrial boards with ISA slots; Embedded Repair Labs-style repair/sourcing services; Centroid/MachMotion full retrofits), the software-only subset (dBase/Clipper/Clarion with no card) is already solved for free by DOSBox-X/86Box/vDos, and the dongle subset's only software fix is dongle emulation, which is a licensing/legal problem not a product. Past software-side attempts to bridge ISA to modern machines (KittenLabs ISA-over-USB, dISAppointment, PicoMEM) are explicitly hobby projects that stalled on bus timing/DMA and a tiny market, and those structural reasons have not changed. I cannot name a differentiator that a Next.js MVP could deliver, and the post author's own idea is hardware, outside this pipeline's build stack.",
+  "stage_2": {
+    "customer": "The one 'computer person' (owner, plant manager, or maintenance lead) at a 5-50 person job shop or analytical/QC lab whose single 1990s machine (a Centroid CNC7 / Ferrocontrol-card CNC mill, or an Olympus UH3 / Finnigan MAT instrument driven by a GPIB ISA card) is controlled by a 286-to-Pentium DOS/Win95 PC that is now failing, and who has no source code, no OEM support, and a machine worth $100k+ that stops producing the day that PC dies. Concrete examples from search: the r/PLC integrator with a 1996 VX ISA-IO customer, the Tom's Hardware user with a GA-7IXE4 + Ferrocontrol FBI-PC card, the retroweb user with a 386 running Centroid CNC7, the r/sysadmin admin with an XP box and LPT dongle on industrial equipment.",
+    "where": "r/Machinists, r/CNC, r/PLC, r/sysadmin, r/vintagecomputing; Practical Machinist forum (CNC Machining subforum); CNCzone; VOGONS (DOS hardware); EEVblog test-gear forum; NI Community (Instrument Control / GPIB); Tom's Hardware forums; Centroid CNC user forum.",
+    "pays_for": "Used ISA-slot motherboards on eBay ($100-500); new industrial ISA-slot SBCs/backplanes from Advantech, IEI, Portwell ($500-1,500 per system); legacy board repair/sourcing services like Embedded Repair Labs; full control retrofits from Centroid (Acorn, ~$300-1,500 kit) or MachMotion ($5k-15k+); OEM software upgrades they refuse to buy (HN commenter cited a $5,000 TK!Solver upgrade avoided by running under DOSBox); onsite IT consultants ($100 HDD sector-copy job cited in the HN thread as having prevented a shutdown)."
+  },
+  "stage_3": {
+    "real_posts": [
+      "https://www.reddit.com/r/PLC/comments/t5skop/bailing_out_a_moron_isa_dos_computer_control/",
+      "https://www.practicalmachinist.com/forum/threads/controller-pc-dies-on-an-out-of-support-machine-what-do-you-do.450720/",
+      "https://forums.tomshardware.com/threads/how-hard-can-it-be-to-get-hold-of-these-old-motherboards-with-isa-slot.3683300/",
+      "https://forum.theretroweb.com/t/need-help-with-an-old-cnc-machine-runnning-on-ibm-pc-dos/66",
+      "https://www.vogons.org/viewtopic.php?t=80314",
+      "https://www.reddit.com/r/sysadmin/comments/yetpnd/legacy_hardware_question_what_is_the_newest_os/",
+      "https://www.reddit.com/r/vintagecomputing/comments/1302m5d/help_determining_with_certainty_that_vintage_isa/"
+    ],
+    "urgent": "Urgency is real but reactive: it exists the week the controller PC dies. r/PLC post: customer's 1996 ISA-IO control PC 'doesn't work', integrator called in. Practical Machinist thread title is literally 'Controller PC dies on an out-of-support machine, what do you do'. Tom's Hardware poster is pre-emptively building a backup PC because the current one 'has started playing up'. HN commenters: a factory where line shutdown/restart 'was measured in days'; a company fined if its legacy box goes down.",
+    "valuable": "Cost is machine downtime and forced capital replacement: a CNC mill or spectrometer worth tens to hundreds of thousands of dollars is idle until the PC is fixed; HN commenter said a $100 HDD clone prevented 'massive bills or even going bankrupt from production loss'; another avoided a $5,000 software upgrade; full control retrofits run $5k-15k+; MachMotion markets directly against 'legacy CNC controller downtime'."
+  },
+  "stage_4": {
+    "software": [
+      "86Box / DOSBox-X / QEMU (86box.net, dosbox-x.com): free, cycle-accurate DOS emulation. Insufficient for the Stage 2 customer because they cannot pass a physical ISA card or its DMA/IRQ timing through to the emulated machine; only helps the no-hardware dBase/Clipper subset, which they already solve for free.",
+      "LinuxCNC / Centroid Acorn / MachMotion (linuxcnc.org, centroidcnc.com, machmotion.com): modern controllers that replace the DOS PC and ISA motion card entirely. Insufficient as a quick fix because it is a $1k-15k+ retrofit with rewiring and re-commissioning, not a same-week PC swap.",
+      "NI-488.2 / Keysight IO Libraries with PCI/USB GPIB adapters (ni.com, keysight.com): modern GPIB interfaces. Insufficient because the customer's DOS instrument software talks directly to the ISA card's I/O ports and has no source to port; the drivers do not help without rewriting the application."
+    ],
+    "workarounds": [
+      "Buy a new-old-stock or industrial ISA-slot motherboard/SBC (Advantech, IEI, Portwell, eBay, Alibaba '486 industrial motherboard' guides) and transplant the card; this is what the Tom's Hardware and Practical Machinist posters attempted.",
+      "Sector-clone the HDD onto several spares and stockpile identical used PCs; the HN thread describes this as the $100 fix that saved a business.",
+      "Do nothing: tape a 'DO NOT TURN OFF' sign to the box, keep it off the network, and call the OEM or a local integrator when it finally dies."
+    ],
+    "graveyard": "Software-side bridging attempts are all hobby-grade and stalled for structural reasons: KittenLabs ISA-over-USB ('the goal was to learn about the ISA bus, not build a polished product'), Matt Fife's dISAppointment (LPC-based, experimental), PicoMEM and PicoGUS (RP2040 boards aimed at retro gaming sound cards, not industrial I/O), and a VOGONS thread asking why anyone wants transparent ISA MMIO/PIO/DMA on modern hardware. They died because real ISA cards need real bus timing and DMA, which cannot be faked reliably over USB or in a VM, and because the paying market is a few thousand shops worldwide that would rather buy a $700 Advantech board. Neither constraint has changed."
+  },
+  "stage_5": null,
+  "stage_6": null,
+  "id": "hn_49848955",
+  "title": "Ask HN: Who's still keeping a DOS machine up because the business depends on it?",
+  "url": "https://news.ycombinator.com/item?id=49848955",
+  "source": "hackernews",
+  "score": 285,
+  "num_comments": 297,
+  "app_name": "ask_hn_who_s_still_keeping_a_dos",
+  "summary": "Ask HN: Who's still keeping a DOS machine up because the business depends on it?",
+  "tech_stack": "Next.js + TypeScript + Tailwind CSS",
+  "_fallback_kill_stage": 4,
+  "_fallback_kill_reason": "The one thing that makes this problem hard is physical ISA-bus / parallel-port access, and no web or software product removes that constraint. The hardware answer already exists from 3+ established vendors (Advantech, IEI, Portwell industrial boards with ISA slots; Embedded Repair Labs-style repair/sourcing services; Centroid/MachMotion full retrofits), the software-only subset (dBase/Clipper/Clarion with no card) is already solved for free by DOSBox-X/86Box/vDos, and the dongle subset's only software fix is dongle emulation, which is a licensing/legal problem not a product. Past software-side attempts to bridge ISA to modern machines (KittenLabs ISA-over-USB, dISAppointment, PicoMEM) are explicitly hobby projects that stalled on bus timing/DMA and a tiny market, and those structural reasons have not changed. I cannot name a differentiator that a Next.js MVP could deliver, and the post author's own idea is hardware, outside this pipeline's build stack.",
+  "_kill_report": "KILLS -- 2026-09-29\n\nTotal candidates evaluated: 26\nKilled: 26  |  Passed to MVP: 0\n\nBy stage:\n  Stage 1 (signal):       21 killed\n  Stage 2 (customer):     4 killed\n  Stage 3 (problem):      0 killed\n  Stage 4 (alternatives): 1 killed\n  Stage 5 (approach):     0 killed\n  Stage 6 (hypothesis):   0 killed\n",
+  "_total_evaluated": 26,
+  "_total_killed": 26,
+  "_fallback": true,
+  "_runners_up": [
+    {
+      "status": "killed",
+      "killed_at_stage": 2,
+      "kill_reason": "No narrowable paying customer. The post identifies the author only as an iPhone user who moved from Verizon to T-Mobile and takes calls at home, at work and on work trips. It gives no profession, no revenue, no business dependence on inbound calls, and no stated cost beyond not knowing a call happened. Narrowing to 'sales reps' or 'on-call professionals who lose deals from missed calls' would mean inventing details the post does not contain, which is reframing to make it fit. The author's only spend is a carrier plan, and they already used the one paid lever available (switching carriers) without success; there is no evidence they would pay for third-party software. The failure also sits inside carrier call routing and iOS call handling, where a Next.js web app cannot observe or intercept a call that never reaches the device, so any product would be a VoIP or number-forwarding replacement in a market already served by Google Voice, OpenPhone and similar. The post is a hypothesis about carrier behaviour, not a request for a tool. This kill rests on the post content alone; no web searches were run, because Stage 2 failed before the Stage 3 search requirement.",
+      "stage_2": {
+        "customer": "Could not be narrowed beyond 'US iPhone user on a major postpaid carrier (Verizon, then T-Mobile) who travels for work and gets silent missed calls weekly'. That is a broad consumer category, not a group of 5 nameable people.",
+        "where": "Not established. The post points to no community beyond Hacker News itself; any subreddit or forum named here would be a guess, not evidence from the post.",
+        "pays_for": "Only a cellular plan (Verizon, then T-Mobile) and iPhones are evidenced. No adjacent software spend is mentioned."
+      },
+      "stage_3": null,
+      "stage_4": null,
+      "stage_5": null,
+      "stage_6": null,
+      "id": "hn_49833212",
+      "title": "Ask HN: Hypothesis: Cellular providers are deprioritizing voice calls?",
+      "url": "https://news.ycombinator.com/item?id=49833212",
+      "source": "hackernews",
+      "score": 21,
+      "num_comments": 46
+    },
+    {
+      "status": "killed",
+      "killed_at_stage": 2,
+      "kill_reason": "The post cannot be narrowed to a customer with money or urgency. The author (HN user phendrenad2) says they 'randomly opened LinkedIn' and hit a UI glitch (search not working, icons overlapping the search box); they state no active job search, deadline, role, industry, seniority, location, or spend. The only narrowing the post supports is 'tech worker who has used LinkedIn for job listings for a decade', which is a broad label, not a person I could point at. Going further would mean inventing details the post does not contain. The thread itself (fetched from the HN API, 24 points) undercuts the candidate: (1) one commenter disputes the premise ('Isn't that an exaggeration? LinkedIn search works fine for me... I have found all my jobs in the last 16 years via linkedin'); (2) the ask is answered in-thread with free alternatives (hiring.cafe, searchforjobs.app, YC jobs page, Indeed, Dice, Glassdoor, recruiters), and one commenter signed up to hiring.cafe on the spot; (3) commenters who are actually in pain locate the problem elsewhere, not in job discovery: 'the question isn't how to find a job opening, but rather how to effectively apply for one', and a senior dev/SRE with 15 years' experience reports 6 months of applying, 4 callbacks and no offers, attributing it to the market ('Idk if it's the boards or the market'); (4) the most technical commenters build their own free agent-based scrapers rather than pay for anything. Nobody in the thread mentions paying for a job board or job-search tool, and the post contains no willingness-to-pay signal. Passing this forward would require reframing the post into a different problem (application effectiveness, ghost jobs, or AI auto-apply), which is rationalizing, so it is killed. Stages 3-6 were not run.",
+      "stage_2": {
+        "customer": "Could not be narrowed past 'tech worker (HN reader) who has used LinkedIn as their default job-listing source for 10+ years and is casually browsing'. The post gives no role, seniority, industry, location, employment status, or active-search status. The corroborating post (hn_49839405, 'Ask HN: Where to look for jobs?', 6 points, 1 comment) adds only that LinkedIn's AI revamp of job search removed the author's usual way of browsing openings; it adds no customer detail either.",
+        "where": "Only venue evidenced is Hacker News itself (Ask HN threads and the monthly 'Who's Hiring' thread referenced in the post). No subreddits, Discords, Slack groups, or newsletters are evidenced by the post or thread, and I did not research any further.",
+        "pays_for": "Nothing evidenced. No one in the post or its comments mentions paying for a job board, LinkedIn Premium, or any job-search tool. Every alternative recommended in the thread is free to the job seeker, and the DIY solutions described are self-built agent scripts."
+      },
+      "stage_3": null,
+      "stage_4": null,
+      "stage_5": null,
+      "stage_6": null,
+      "id": "hn_49816567",
+      "title": "Ask HN: What job boards are good these days?",
+      "url": "https://news.ycombinator.com/item?id=49816567",
+      "source": "hackernews",
+      "score": 24,
+      "num_comments": 18
+    }
+  ]
+}

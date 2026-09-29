@@ -1,0 +1,16 @@
+PRINCIPLE 1: Familiarity Bias (#34, "People prefer familiar experiences")
+  Why it fits: This buyer has been told "just upgrade" by every generic IT vendor, so they only act once they see their exact hardware named.
+  How to apply: Put the hardware strings from the source threads in the hero, above the fold: "Centroid CNC7 · Ferrocontrol FBI-PC · Olympus UH3 · Finnigan MAT · GPIB ISA cards · LPT dongles · 286 to Pentium, DOS / Win95". Style them as a plain monospace compatibility list, with no stock imagery and no "legacy modernization" wording.
+
+PRINCIPLE 2: Loss Aversion (#65, "People prefer to avoid losses more than earning equivalent gains")
+  Why it fits: The PC is cheap and the machine is worth $100k+, so the motivating fact is what stops the day the PC dies.
+  How to apply: Directly under the hero, add a two-field calculator, "What does this machine bill per day?" × "Days to recover if the PC died tonight?", which outputs "A dead control PC costs you $X". Use only the visitor's own inputs, with no invented statistics or countdown timers, and put the CTA immediately below the result.
+
+PRINCIPLE 3: Commitment & Consistency (#66, "Users tend to be consistent with their previous actions")
+  Why it fits: A sceptical technical buyer won't give an email to an unknown service cold, but will answer a question about their own machine and then tends to finish what they started.
+  How to apply: Replace the bare email form with a two-step CTA. Step 1 is one click, "Which machine are you keeping alive?", with buttons for CNC mill, lab instrument, other industrial and an optional free-text field for controller or card. Step 2 shows their answer back ("Got it: Centroid CNC7 on a 386") and asks for an email to send a survival plan for that setup. Log step 1 and step 2 as separate events.
+
+Notes:
+- **Test signal was blank.** I assumed it is "visitor submits their machine details plus email". If it is something else, such as a pre-order, paid deposit or booked call, Principle 3's step 2 needs to change.
+- **Social Proof left out on purpose.** The skill's diagnostic ranked it top, but a brand-new MVP has no real customers or waitlist count to show, and a made-up one would be fabricated.
+- **One principle per section.** Hero, calculator and CTA each carry one, to avoid stacking persuasion on a single surface.

@@ -1,0 +1,27 @@
+**Blocker: there is no homepage to audit.** `app/` contains only `favicon.ico`, `globals.css`, and empty `api/events`, `privacy`, and `terms` directories. There is no `page.tsx` or `layout.tsx`, and `components/DemoPlayer.tsx` imports `@/remotion/Demo`, which does not exist. `build_log.txt` is a single line: `API Error: Can't reach the API server — check your internet or DNS (ENOTFOUND)`.
+
+The only visible copy is `marketing_copy.txt`, so the audit below is of that draft, not a rendered page. I did not run the skill's audit scripts and edited nothing. A previous `landing_audit.txt` exists, and two of its fixes (CTA swap, softened objection 2) are already in the copy, so these fixes are new.
+
+## SCORE: 0/10 for the page (nothing renders); 7/10 for the draft copy
+
+## TOP 3 FIXES
+
+1. **Fill the proof gap with one line of real facts under the hero.** The copy has no number, price, lead time, board spec, photo, or list of cards tested. The line should carry ISA slot count, CPU class, price or range, and ship time. I have not suggested values because none exist in the build files; they have to come from you.
+2. **Make value prop 2 match objection 2.** "Your DOS or Win95 software runs from a copy of your existing disk" is an unconditional promise, while objection 2 says "If it won't run, we tell you." Replace it with: "We copy your existing disk and test it against your card before you pay. No source code, no rewrite, no retrofit."
+3. **Cut the secondary CTA and lower the friction on the primary.** "Reserve a replacement PC" asks for a commitment with no price or lead time, and competes with the main ask. Delete it, and change the primary to: "Email us a photo of your card. We'll tell you if it will run, before you pay anything."
+
+## GREEN FLAGS
+
+- **The headline is concrete.** "Your 1996 mill is fine. The 386 that runs it is dying." is easy to picture and names the real problem.
+- **The copy is differentiated.** "Real ISA slot, with its own IRQ, DMA, and I/O ports. It is not an emulator." is checkable, and an emulator vendor or CNC retrofit shop could not sign it.
+- **The audience is tight.** The subheadline names Centroid CNC7, Ferrocontrol, and GPIB cards, and speaks to "the one person at the shop or lab who keeps the DOS machine alive."
+- **The objections are in the customer's words.** "I tried 86Box and DOSBox-X. They can't see my card." reads like the source threads.
+- **The risk reversal is strong.** The old PC stays untouched as the fallback, which answers the fear that production stops.
+- **There is one promise.** Everything supports the same idea: same card, same software, new PC.
+
+Smaller points:
+- The hook is three sentences; the third ("We build the replacement PC...") would sit better as the first line of the subheadline.
+- "Mill" leaves out the lab half of the audience until the subheadline.
+- The XP-box and LPT-dongle segment is not addressed anywhere in the copy.
+
+Unrelated: the claude.ai Year Map and Stripe MCP servers need authorising, via claude.ai connector settings and `/mcp` in an interactive session respectively.

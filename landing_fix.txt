@@ -1,0 +1,11 @@
+**The landing page itself was not fixed, because it doesn't exist.** The build has no `page.tsx` or `layout.tsx`, and `remotion/Demo.tsx` is missing; `build_log.txt` shows the build died on an API error. I applied what I could to `marketing_copy.txt`, the only copy source. Nothing was rendered or type-checked.
+
+| Fix | Status | Change |
+|---|---|---|
+| 1. Swap the CTAs | Applied | Primary is now "Send us your card model. We'll tell you if it will run." Secondary is "Reserve a replacement PC". |
+| 2. Hard facts under the hero | Not applied | No slot count, CPU class, price, or ship time exists in any build file, and I won't invent them. |
+| 3. Cut the absolute promise | Applied | Objection 2 now reads: "We copy the disk you already have. We check your card and software before you pay. If it won't run, we tell you." |
+
+To finish, the page build needs re-running, and fix 2 needs real specs from you.
+
+Unrelated: the claude.ai Year Map and Stripe MCP servers need authorising, via claude.ai connector settings and `/mcp` respectively.

@@ -1,0 +1,17 @@
+HOOK: Your 1996 mill is fine. The 386 that runs it is dying. We build the replacement PC your ISA card plugs straight into.
+
+SUBHEADLINE: For the one person at the shop or lab who keeps the DOS machine alive: move your Centroid CNC7, Ferrocontrol, or GPIB-card setup onto new hardware without touching the software, the wiring, or the machine.
+
+VALUE_PROP:
+- Your original ISA card goes into a real ISA slot, with its own IRQ, DMA, and I/O ports. It is not an emulator.
+- Your DOS or Win95 software runs from a copy of your existing disk. No source code, no rewrite, no retrofit.
+- Your old PC stays untouched on the shelf as the fallback.
+
+CTA: Send us your card model. We'll tell you if it will run.
+
+SECONDARY_CTA: Reserve a replacement PC
+
+OBJECTIONS:
+- "I tried 86Box and DOSBox-X. They can't see my card." Correct, because emulators cannot pass a physical ISA card or its timing through. This is hardware with a real ISA bus, so the software talks to the card at the same ports it always has.
+- "I have no source code, no install disks, and the OEM is gone." We copy the disk you already have. We check your card and software before you pay. If it won't run, we tell you.
+- "If the swap fails, my machine stops producing." The old PC is never modified. If the new one does not run the machine, you plug the old one back in and are where you started.
